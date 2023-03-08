@@ -1,0 +1,16 @@
+
+name: Build and test of Java Project
+ 
+on: 
+  push:
+    branches:
+      - master
+ 
+jobs:
+  build:
+    name: Build with Docker
+    runs-on: ubuntu-18.04 
+    steps:
+      - uses: actions/checkout@v2
+      - name: Building the image from the Dockerfile
+        uses: ./.github/action-docker
