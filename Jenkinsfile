@@ -9,7 +9,7 @@ pipeline {
 
       }
       steps {
-        sh 'echo 1'
+        sh 'pwd'
       }
     }
 
