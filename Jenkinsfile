@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('uno') {
+    stage('Build') {
       agent {
         node {
           label 'uno'
@@ -9,7 +9,7 @@ pipeline {
 
       }
       steps {
-        sh 'pwd'
+        sh 'npm install'
       }
     }
 
