@@ -2,12 +2,7 @@ pipeline {
   agent any
   stages {
     stage('Git CheckOut') {
-      agent {
-        node {
-          label 'uno'
-        }
-
-      }
+      agent any
       steps {
         git(url: 'https://github.com/fidelrodriguezjaimez/project-test-github-main.git', branch: 'master')
         echo 'CheckOut realizado con exito'
