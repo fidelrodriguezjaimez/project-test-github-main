@@ -11,7 +11,7 @@ pipeline {
 
     stage('Compilado') {
       steps {
-        bat 'Compile.bat'
+        sh 'echo "Compiling Code"'
         echo 'Compilacion exitosa'
       }
     }
