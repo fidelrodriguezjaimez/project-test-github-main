@@ -18,14 +18,14 @@ pipeline {
 
     stage('Package') {
       steps {
-        bat 'Package.bat'
+        sh 'echo "Packaging...."'
         echo 'package exitoso'
       }
     }
 
     stage('deploy') {
       steps {
-        bat 'Deploy.bat'
+        sh 'echo "Deploying....."'
         echo 'Deploy exitoso'
       }
     }
