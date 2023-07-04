@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-    node {
-      label 'Node agent'
-    }
-
-  }
+  agent any
   stages {
     stage('Git CheckOut') {
       agent {
