@@ -11,14 +11,14 @@ pipeline {
 
     stage('Compilado') {
       steps {
-        sh 'echo "Compiling Code"'
+        sh 'npm install'
         echo 'Compilacion exitosa'
       }
     }
 
-    stage('Package') {
+    stage('Test') {
       steps {
-        sh 'echo "Packaging...."'
+        sh './jenkins/scripts/test.sh '
         echo 'package exitoso'
       }
     }
