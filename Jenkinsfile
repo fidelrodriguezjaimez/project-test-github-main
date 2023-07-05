@@ -11,7 +11,8 @@ pipeline {
 
     stage('Compilado') {
       steps {
-        sh 'mvn clean compile'
+        sh '''clean install
+mvn clean compile'''
         echo 'Compilacion exitosa'
       }
     }
