@@ -11,21 +11,27 @@ pipeline {
 
     stage('Compilado') {
       steps {
-        sh 'npm install'
+        sh 'mvn clean compile'
         echo 'Compilacion exitosa'
       }
     }
 
     stage('Test') {
       steps {
-        sh './jenkins/scripts/test.sh '
+        sh 'mvn test '
         echo 'package exitoso'
       }
     }
 
-    stage('deploy') {
+    stage('Package') {
       steps {
-        sh 'echo "Deploying....."'
+        sh 'mvn package'
+        echo 'package exitoso'
+      }
+    }
+
+    stage('Deploy') {
+      steps {
         echo 'Deploy exitoso'
       }
     }
