@@ -30,9 +30,10 @@ pipeline {
       }
     }
 
-    stage('Deploy') {
+    stage('BuildImage') {
       steps {
-        echo 'Deploy exitoso'
+        sh 'docker build -t java-imagen Dockerfile'
+        echo 'Build Image succes'
       }
     }
 
