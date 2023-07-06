@@ -54,8 +54,11 @@ pipeline {
               -Dsonar.coveragePlugin=generic \
               -Dsonar.genericCoverage.reportPaths=coverage.xml \
               -Dsonar.projectKey=${SONAR_KEY} \
+              -Dsonar.host.url=${SONAR_SERVER} \
+              -Dsonar.login=${SONAR_TOKEN} \
+              -Dsonar.sources=src \
               -Dsonar.exclusions=**/node_modules/** \
-              -Dsonar.tests=src"
+              -Dsonar.tests=src/test"
         }
       }
     }
