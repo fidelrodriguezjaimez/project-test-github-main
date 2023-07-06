@@ -41,25 +41,17 @@ pipeline {
         // Checkout your code repository
         checkout scm
     
-        // Set up environment variables
-        withEnv([
-          "SONAR_TOKEN=7eb678e177fe0d360298d0e466cd5177166a9b6e",
-          "SONAR_HOST_URL=https://devtools.axity.com/sonarlts",
-          "SONAR_PROJECT_KEY=23_Coppel_TestJenkinsGitHub"
-        ]) {
-    
-            // Run the SonarQube scanner with the sonarqube-generic-coverage plugin
-            sh "sonar-scanner \
-              -Dsonar.coverageReportPaths=coverage.xml \
-              -Dsonar.coveragePlugin=generic \
-              -Dsonar.genericCoverage.reportPaths=coverage.xml \
-              -Dsonar.projectKey=${SONAR_KEY} \
-              -Dsonar.host.url=${SONAR_SERVER} \
-              -Dsonar.login=${SONAR_TOKEN} \
-              -Dsonar.sources=src \
-              -Dsonar.exclusions=**/node_modules/** \
-              -Dsonar.tests=src/test"
-        }
+        // Run the SonarQube scanner with the sonarqube-generic-coverage plugin
+        sh "sonar-scanner \
+          -Dsonar.coverageReportPaths=coverage.xml \
+          -Dsonar.coveragePlugin=generic \
+          -Dsonar.genericCoverage.reportPaths=coverage.xml \
+          -Dsonar.projectKey=${SONAR_KEY} \
+          -Dsonar.host.url=${SONAR_SERVER} \
+          -Dsonar.login=${SONAR_TOKEN} \
+          -Dsonar.sources=src \
+          -Dsonar.exclusions=target \
+          -Dsonar.tests=src/test"        
       }
     }
 
