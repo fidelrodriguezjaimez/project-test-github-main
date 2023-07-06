@@ -1,4 +1,4 @@
-package com.furazin.projecttestgithub;
+//package com.furazin.projecttestgithub;
 
 import com.furazin.projecttestgithub.Math.Arithmetic;
 import org.junit.Assert;
