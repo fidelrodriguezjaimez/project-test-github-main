@@ -34,7 +34,7 @@ pipeline {
       steps {
         sh 'pwd'
         sh 'ls'
-        sh 'docker build -t java-imagen Dockerfile'
+        sh 'docker build -t java-imagen /var/jenkins_home/workspace/project-test-github-main_master/Dockerfile'
         echo 'Build Image succes'
       }
     }
