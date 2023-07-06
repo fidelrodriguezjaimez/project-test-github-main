@@ -23,6 +23,13 @@ pipeline {
       }
     }
 
+    stage('Package') {
+      steps {
+        sh 'mvn package'
+        echo 'package exitoso'
+      }
+    }
+
     stage('SonarQube Scan') {
       steps {
         // Checkout your code repository
@@ -39,15 +46,9 @@ pipeline {
             sh "sonar-scanner \
               -Dsonar.coverageReportPaths=coverage.xml \
               -Dsonar.coveragePlugin=generic \
-              -Dsonar.genericCoverage.reportPaths=coverage.xml"
+              -Dsonar.genericCoverage.reportPaths=coverage.xml" \
+              -Dsonar.projectKey=23_Coppel_TestJenkinsGitHub
         }
-      }
-    }
-    
-    stage('Package') {
-      steps {
-        sh 'mvn package'
-        echo 'package exitoso'
       }
     }
 
