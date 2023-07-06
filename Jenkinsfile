@@ -46,8 +46,8 @@ pipeline {
             sh "sonar-scanner \
               -Dsonar.coverageReportPaths=coverage.xml \
               -Dsonar.coveragePlugin=generic \
-              -Dsonar.genericCoverage.reportPaths=coverage.xml" \
-              -Dsonar.projectKey=$SONAR_PROJECT_KEY
+              -Dsonar.genericCoverage.reportPaths=coverage.xml \
+              -Dsonar.projectKey=$(SONAR_PROJECT_KEY)"
         }
       }
     }
