@@ -32,8 +32,6 @@ pipeline {
 
     stage('BuildImage') {
       steps {
-        sh 'pwd'
-        sh 'ls'
         sh 'docker build -t java-imagen .'
         echo 'Build Image succes'
       }
