@@ -51,7 +51,8 @@ pipeline {
           -Dsonar.login=${SONAR_TOKEN} \
           -Dsonar.sources=src \
           -Dsonar.exclusions=target \
-          -Dsonar.tests=src/test"        
+          -Dsonar.tests=src/test \
+          -Dsonar.test.inclusions=**/*.spec.ts"        
       }
     }
 
