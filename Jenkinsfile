@@ -34,16 +34,20 @@ pipeline {
       steps {
         sh 'docker build -t java-imagen **/Dockerfile'
         echo 'Build Image succes'
+        sh '''pwd
+ls'''
       }
     }
 
   }
   post {
-        success {
-            echo 'Esto se ejecutará solo si se ejecuta correctamente'
-        }
-        failure {
-            echo 'Esto se ejecutará solo si falla'
-        }
+    success {
+      echo 'Esto se ejecutará solo si se ejecuta correctamente'
+    }
+
+    failure {
+      echo 'Esto se ejecutará solo si falla'
+    }
+
   }
 }
