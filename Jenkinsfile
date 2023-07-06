@@ -40,11 +40,9 @@ pipeline {
 
   }
   post {
-        always {
-            junit 'build/reports/**/*.xml'
-        }
         success {
             echo 'Esto se ejecutará solo si se ejecuta correctamente'
+            junit 'build/reports/**/*.xml'
         }
         failure {
             echo 'Esto se ejecutará solo si falla'
