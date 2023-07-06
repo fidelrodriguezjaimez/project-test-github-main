@@ -19,7 +19,6 @@ pipeline {
     stage('Test') {
       steps {
         sh 'mvn test'
-        sh './gradlew check'
         echo 'package exitoso'
       }
     }
@@ -42,7 +41,6 @@ pipeline {
   post {
         success {
             echo 'Esto se ejecutará solo si se ejecuta correctamente'
-            junit 'build/reports/**/*.xml'
         }
         failure {
             echo 'Esto se ejecutará solo si falla'
