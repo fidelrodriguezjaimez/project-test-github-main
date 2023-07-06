@@ -50,7 +50,7 @@ pipeline {
           -Dsonar.host.url=${SONAR_SERVER} \
           -Dsonar.login=${SONAR_TOKEN} \
           -Dsonar.sources=src \
-          -Dsonar.exclusions=target \
+          -Dsonar.exclusions=src/main/java/com/furazin/projecttestgithub/main.java \
           -Dsonar.tests=src/test \
           -Dsonar.test.inclusions=**/*.spec.ts"        
       }
