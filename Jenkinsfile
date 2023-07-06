@@ -1,5 +1,11 @@
 pipeline {
   agent any
+    environment {
+    // General configurations
+    SONAR_KEY = "23_Coppel_TestJenkinsGitHub";
+    SONAR_SERVER = "https://devtools.axity.com/sonarlts";
+    SONAR_TOKEN = "7eb678e177fe0d360298d0e466cd5177166a9b6e";
+  }
   stages {
     stage('Git CheckOut') {
       agent any
@@ -47,7 +53,9 @@ pipeline {
               -Dsonar.coverageReportPaths=coverage.xml \
               -Dsonar.coveragePlugin=generic \
               -Dsonar.genericCoverage.reportPaths=coverage.xml \
-              -Dsonar.projectKey=23_Coppel_TestJenkinsGitHub"
+              -Dsonar.projectKey=${SONAR_KEY} \
+              -Dsonar.exclusions=**/node_modules/** \
+              -Dsonar.tests=src"
         }
       }
     }
