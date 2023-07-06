@@ -23,6 +23,24 @@ pipeline {
       }
     }
 
+    stage('SonarQube Scan') {
+      steps {
+        // Checkout your code repository
+        checkout scm
+    
+        // Set up environment variables
+        withEnv([
+          "SONAR_TOKEN=7eb678e177fe0d360298d0e466cd5177166a9b6e",
+          "SONAR_HOST_URL=https://devtools.axity.com/sonarlts",
+          "SONAR_PROJECT_KEY=23_Coppel_TestJenkinsGitHub"
+        ]) {
+    
+          // Run the SonarQube scanner
+          sh "sonar-scanner"
+        }
+      }
+    }
+
     stage('Package') {
       steps {
         sh 'mvn package'
