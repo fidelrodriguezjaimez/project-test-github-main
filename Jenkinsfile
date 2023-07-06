@@ -47,7 +47,7 @@ pipeline {
               -Dsonar.coverageReportPaths=coverage.xml \
               -Dsonar.coveragePlugin=generic \
               -Dsonar.genericCoverage.reportPaths=coverage.xml \
-              -Dsonar.projectKey=$(SONAR_PROJECT_KEY)"
+              -Dsonar.projectKey=23_Coppel_TestJenkinsGitHub"
         }
       }
     }
