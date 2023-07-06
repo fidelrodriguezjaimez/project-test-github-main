@@ -18,7 +18,8 @@ pipeline {
 
     stage('Test') {
       steps {
-        sh 'mvn test '
+        sh 'mvn test'
+        sh './gradlew check'
         echo 'package exitoso'
       }
     }
@@ -39,6 +40,9 @@ pipeline {
 
   }
   post {
+        always {
+            junit 'build/reports/**/*.xml'
+        }
         success {
             echo 'Esto se ejecutará solo si se ejecuta correctamente'
         }
