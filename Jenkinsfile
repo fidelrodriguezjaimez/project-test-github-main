@@ -35,12 +35,15 @@ pipeline {
           "SONAR_PROJECT_KEY=23_Coppel_TestJenkinsGitHub"
         ]) {
     
-          // Run the SonarQube scanner
-          sh "sonar-scanner"
+            // Run the SonarQube scanner with the sonarqube-generic-coverage plugin
+            sh "sonar-scanner \
+              -Dsonar.coverageReportPaths=coverage.xml \
+              -Dsonar.coveragePlugin=generic \
+              -Dsonar.genericCoverage.reportPaths=coverage.xml"
         }
       }
     }
-
+    
     stage('Package') {
       steps {
         sh 'mvn package'
