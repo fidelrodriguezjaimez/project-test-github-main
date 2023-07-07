@@ -1,11 +1,5 @@
 pipeline {
   agent any
-    environment {
-    // General configurations
-    SONAR_KEY = "23_Coppel_TestJenkinsGitHub";
-    SONAR_SERVER = "https://devtools.axity.com/sonarlts";
-    SONAR_TOKEN = "7eb678e177fe0d360298d0e466cd5177166a9b6e";
-  }
   stages {
     stage('Git CheckOut') {
       agent any
@@ -39,29 +33,27 @@ pipeline {
 
     stage('folder raiz') {
       steps {
-        sh 'cd /opt'
+        sh '''"cd /opt \\
+ ls"'''
         echo 'package exitoso'
       }
     }
 
     stage('SonarQube Scan') {
-      steps {        
-        // Checkout your code repository
+      steps {
         checkout scm
-    
-        // Run the SonarQube scanner with the sonarqube-generic-coverage plugin
         sh "sonar-scanner \
-          -Dsonar.coverageReportPaths=coverage.xml \
-          -Dsonar.coveragePlugin=generic \
-          -Dsonar.genericCoverage.reportPaths=coverage.xml \
-          -Dsonar.projectKey=${SONAR_KEY} \
-          -Dsonar.host.url=${SONAR_SERVER} \
-          -Dsonar.login=${SONAR_TOKEN} \
-          -Dsonar.sources=. \
-          -Dsonar.java.binaries=/opt/javaBuildClass \
-          -Dsonar.exclusions=src/main/java/com/furazin/projecttestgithub/main.java \
-          -Dsonar.tests=src/test \
-          -Dsonar.test.inclusions=**/*.spec.ts"        
+                  -Dsonar.coverageReportPaths=coverage.xml \
+                  -Dsonar.coveragePlugin=generic \
+                  -Dsonar.genericCoverage.reportPaths=coverage.xml \
+                  -Dsonar.projectKey=${SONAR_KEY} \
+                  -Dsonar.host.url=${SONAR_SERVER} \
+                  -Dsonar.login=${SONAR_TOKEN} \
+                  -Dsonar.sources=. \
+                  -Dsonar.java.binaries=/opt/javaBuildClass \
+                  -Dsonar.exclusions=src/main/java/com/furazin/projecttestgithub/main.java \
+                  -Dsonar.tests=src/test \
+                  -Dsonar.test.inclusions=**/*.spec.ts"
       }
     }
 
@@ -72,6 +64,11 @@ pipeline {
       }
     }
 
+  }
+  environment {
+    SONAR_KEY = '23_Coppel_TestJenkinsGitHub'
+    SONAR_SERVER = 'https://devtools.axity.com/sonarlts'
+    SONAR_TOKEN = '7eb678e177fe0d360298d0e466cd5177166a9b6e'
   }
   post {
     success {
