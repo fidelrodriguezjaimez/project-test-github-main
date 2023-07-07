@@ -51,7 +51,6 @@ pipeline {
     stage('BuildImage') {
       steps {
         sh 'docker build -t java-imagen .'
-        sh
         echo 'Build Image succes'
       }
     }
