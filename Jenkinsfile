@@ -33,9 +33,12 @@ pipeline {
 
     stage('folder raiz') {
       steps {
-        sh 'cd opt'
-        sh 'pwd'
-        sh 'ls'
+        sh """ 
+          #!/bin/bash
+          cd /var/jenkins_home/workspace/project-test-github-main_master/target/classes
+          pwd
+          ls -l
+          """ 
         echo 'package exitoso'
       }
     }
