@@ -57,9 +57,10 @@ pipeline {
 
     stage('Push Harbor') {
       steps {
-        sh 'docker tag java-imagen demo.goharbor.io/jenkinsjavaimage/java-imagen:BUILD_NUMBER'
-        sh 'docker login demo.goharbor.io'
-        sh 'docker push login demo.goharbor.io/jenkinsjavaimage/java-imagen:BUILD_NUMBER'
+        sh 'docker tag java-imagen demo.goharbor.io/jenkinsjavaimage/java-imagen:${BUILD_NUMBER}'
+        sh 'docker images'
+        sh 'docker login ${HARBOR_URL} -u ${HARBOR_USERNAME} -p ${HARBOR_PASSWORD}'
+        sh 'docker push ${HARBOR_URL}/jenkinsjavaimage/java-imagen:${BUILD_NUMBER}'
         echo 'Image Push succed'
       }
     }
@@ -69,6 +70,9 @@ pipeline {
     SONAR_KEY = '23_Coppel_TestJenkinsGitHub'
     SONAR_SERVER = 'https://devtools.axity.com/sonarlts'
     SONAR_TOKEN = '7eb678e177fe0d360298d0e466cd5177166a9b6e'
+    HARBOR_URL = 'demo.goharbor.io'
+    HARBOR_USERNAME = 'fidel.rodriguez'
+    HARBOR_PASSWORD = '#M4r1d3l1987'
   }
   post {
     success {
