@@ -18,7 +18,7 @@ pipeline {
     stage('Compilado') {
       steps {
         sh 'mvn clean compile'
-        sh 'javac -d opt/javaBuildClass src/**/**/**/**/**/*.java src/**/**/**/**/**/Math/*.java'
+        sh 'javac -d opt/javaBuildClass src/main/java/**/**/**/main.java src/main/java/**/**/**/Math/Arithmetic.java'
         echo 'Compilacion exitosa'
       }
     }
