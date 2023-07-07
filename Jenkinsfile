@@ -39,7 +39,7 @@ pipeline {
 
     stage('folder raiz') {
       steps {
-        sh 'cd /opt/javaBuildClass'
+        sh 'cd /opt'
         sh 'ls'
         echo 'package exitoso'
       }
