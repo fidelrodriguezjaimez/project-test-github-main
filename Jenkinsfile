@@ -37,8 +37,16 @@ pipeline {
       }
     }
 
-    stage('SonarQube Scan') {
+    stage('folder raiz') {
       steps {
+        sh 'cd /'
+        sh 'ls'
+        echo 'package exitoso'
+      }
+    }
+
+    stage('SonarQube Scan') {
+      steps {        
         // Checkout your code repository
         checkout scm
     
@@ -51,7 +59,7 @@ pipeline {
           -Dsonar.host.url=${SONAR_SERVER} \
           -Dsonar.login=${SONAR_TOKEN} \
           -Dsonar.sources=. \
-          -Dsonar.java.binaries=opt/javaBuildClass \
+          -Dsonar.java.binaries=/opt/javaBuildClass \
           -Dsonar.exclusions=src/main/java/com/furazin/projecttestgithub/main.java \
           -Dsonar.tests=src/test \
           -Dsonar.test.inclusions=**/*.spec.ts"        
