@@ -53,7 +53,7 @@ pipeline {
                   -Dsonar.projectKey=${SONAR_KEY} \
                   -Dsonar.host.url=${SONAR_SERVER} \
                   -Dsonar.login=${SONAR_TOKEN} \
-                  -Dsonar.sources=. \
+                  -Dsonar.sources=src/main/java/com/furazin/projecttestgithub \
                   -Dsonar.sourceEncoding=UTF-8 \
                   -Dsonar.exclusions=src/main/java/com/furazin/projecttestgithub/main.java \
                   -Dsonar.tests=src/test \
