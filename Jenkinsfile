@@ -12,7 +12,6 @@ pipeline {
     stage('Compilado') {
       steps {
         sh 'mvn clean compile'
-        sh 'javac -d opt/javaBuildClass src/main/java/**/**/**/main.java src/main/java/**/**/**/Math/Arithmetic.java'
         echo 'Compilacion exitosa'
       }
     }
@@ -27,18 +26,6 @@ pipeline {
     stage('Package') {
       steps {
         sh 'mvn package'
-        echo 'package exitoso'
-      }
-    }
-
-    stage('folder raiz') {
-      steps {
-        sh """ 
-          #!/bin/bash
-          cd /var/jenkins_home/workspace/project-test-github-main_master/target/classes
-          pwd
-          ls
-          """ 
         echo 'package exitoso'
       }
     }
