@@ -44,13 +44,24 @@ pipeline {
                   -Dsonar.tests=src/test \
                   -Dsonar.test.inclusions=*.spec.ts \
                   -Dsonar.typescript.lcov.reportPaths=coverage/lcov.info"
+        echo 'Scaneo Exitoso'
       }
     }
 
     stage('BuildImage') {
       steps {
         sh 'docker build -t java-imagen .'
+        sh
         echo 'Build Image succes'
+      }
+    }
+
+    stage('Push Harbor') {
+      steps {
+        sh 'docker tag java-imagen demo.goharbor.io/jenkinsjavaimage/java-imagen:BUILD_NUMBER'
+        sh 'docker login demo.goharbor.io'
+        sh 'docker push login demo.goharbor.io/jenkinsjavaimage/java-imagen:BUILD_NUMBER'
+        echo 'Image Push succed'
       }
     }
 
