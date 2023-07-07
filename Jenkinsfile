@@ -68,7 +68,7 @@ pipeline {
   environment {
     SONAR_KEY = '23_Coppel_TestJenkinsGitHub'
     SONAR_SERVER = 'https://devtools.axity.com/sonarlts'
-    SONAR_TOKEN = '7eb678e177fe0d360298d0e466cd5177166a9b6e'
+    SONAR_TOKEN = credentials("sonartoken-secret")
     HARBOR_URL = 'demo.goharbor.io'
     HARBOR_USERNAME = 'fidel.rodriguez'
     HARBOR_PASSWORD = credentials("harborpas-secret")
