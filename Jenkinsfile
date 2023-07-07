@@ -71,7 +71,7 @@ pipeline {
     SONAR_TOKEN = '7eb678e177fe0d360298d0e466cd5177166a9b6e'
     HARBOR_URL = 'demo.goharbor.io'
     HARBOR_USERNAME = 'fidel.rodriguez'
-    HARBOR_PASSWORD = '#M4r1d3l1987'
+    HARBOR_PASSWORD = credentials("harborpas-secret")
   }
   post {
     success {
