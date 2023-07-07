@@ -33,12 +33,9 @@ pipeline {
 
     stage('folder raiz') {
       steps {
-        sh "cd / \
-              pwd  \
-              ls  \
-              cd opt \
-              pwd \
-              ls"
+        sh 'cd /'
+        sh 'pwd'
+        sh 'ls'
         echo 'package exitoso'
       }
     }
