@@ -39,8 +39,8 @@ pipeline {
 
     stage('folder raiz') {
       steps {
-        sh 'cd /opt'
-        sh 'ls'
+        sh 'cd /opt
+            ls'
         echo 'package exitoso'
       }
     }
