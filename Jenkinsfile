@@ -50,14 +50,13 @@ pipeline {
 
     stage('BuildImage') {
       steps {
-        sh 'docker build -t java-imagen .'
+        sh 'docker build -t demo.goharbor.io/jenkinsjavaimage/java-imagen:${BUILD_NUMBER} .'
         echo 'Build Image succes'
       }
     }
 
     stage('Push Harbor') {
       steps {
-        sh 'docker tag java-imagen demo.goharbor.io/jenkinsjavaimage/java-imagen:${BUILD_NUMBER}'
         sh 'docker images'
         sh 'docker login ${HARBOR_URL} -u ${HARBOR_USERNAME} -p ${HARBOR_PASSWORD}'
         sh 'docker push ${HARBOR_URL}/jenkinsjavaimage/java-imagen:${BUILD_NUMBER}'
