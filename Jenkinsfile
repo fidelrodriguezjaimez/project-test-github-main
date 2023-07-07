@@ -56,10 +56,11 @@ pipeline {
     }
 
     stage('Push Harbor') {
-      steps {
-        sh 'docker images'
+      steps {        
         sh 'docker login ${HARBOR_URL} -u ${HARBOR_USERNAME} -p ${HARBOR_PASSWORD}'
         sh 'docker push ${HARBOR_URL}/jenkinsjavaimage/java-imagen:${BUILD_NUMBER}'
+        sh 'docker rmi ${HARBOR_URL}/jenkinsjavaimage/java-imagen:${BUILD_NUMBER}'
+        sh 'docker images'
         echo 'Image Push succed'
       }
     }
