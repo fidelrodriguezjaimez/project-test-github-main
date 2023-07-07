@@ -33,8 +33,12 @@ pipeline {
 
     stage('folder raiz') {
       steps {
-        sh '''"cd /opt \\
- ls"'''
+        sh "cd / \
+              pwd  \
+              ls  \
+              cd opt \
+              pwd \
+              ls"
         echo 'package exitoso'
       }
     }
@@ -53,7 +57,7 @@ pipeline {
                   -Dsonar.java.binaries=/opt/javaBuildClass \
                   -Dsonar.exclusions=src/main/java/com/furazin/projecttestgithub/main.java \
                   -Dsonar.tests=src/test \
-                  -Dsonar.test.inclusions=**/*.spec.ts"
+                  -Dsonar.test.inclusions=*.spec.ts"
       }
     }
 
