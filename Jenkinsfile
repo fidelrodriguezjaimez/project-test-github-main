@@ -37,7 +37,7 @@ pipeline {
           #!/bin/bash
           cd /var/jenkins_home/workspace/project-test-github-main_master/target/classes
           pwd
-          ls -l
+          ls
           """ 
         echo 'package exitoso'
       }
