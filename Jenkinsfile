@@ -47,9 +47,7 @@ pipeline {
       steps {
         checkout scm
         sh "sonar-scanner \
-                  -Dsonar.coverageReportPaths=coverage.xml \
                   -Dsonar.coveragePlugin=generic \
-                  -Dsonar.genericCoverage.reportPaths=coverage.xml \
                   -Dsonar.projectKey=${SONAR_KEY} \
                   -Dsonar.host.url=${SONAR_SERVER} \
                   -Dsonar.login=${SONAR_TOKEN} \
@@ -57,7 +55,8 @@ pipeline {
                   -Dsonar.sourceEncoding=UTF-8 \
                   -Dsonar.exclusions=src/main/java/com/furazin/projecttestgithub/main.java \
                   -Dsonar.tests=src/test \
-                  -Dsonar.test.inclusions=*.spec.ts"
+                  -Dsonar.test.inclusions=*.spec.ts \
+                  -Dsonar.typescript.lcov.reportPaths=coverage/lcov.info"
       }
     }
 
