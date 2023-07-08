@@ -13,6 +13,7 @@ pipeline {
       steps {
         sh 'mvn clean compile'
         sh 'mvn clean install'
+        sh 'javac -d binaries/build src/*.java'
         echo 'Compilacion exitosa'
       }
     }
@@ -56,7 +57,7 @@ pipeline {
                   -Dsonar.sourceEncoding=UTF-8 \
                   -Dsonar.exclusions=src/main/java/com/furazin/projecttestgithub/main.java \
                   -Dsonar.tests=src/test \
-                  -Dsonar.java.binaries=target/test-classes \
+                  -Dsonar.java.binaries=binaries/build \
                   -Dsonar.test.inclusions=*.spec.ts \
                   -Dsonar.typescript.lcov.reportPaths=coverage/lcov.info"
         echo 'Scaneo Exitoso'
