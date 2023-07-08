@@ -36,9 +36,7 @@ pipeline {
         sh script:'''
           #!/bin/bash
           echo "This is start $(pwd)"
-          cd src/main/resources
-          ls
-          cd /
+          cd target
           ls
         '''
         echo 'package exitoso'
