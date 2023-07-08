@@ -38,6 +38,9 @@ pipeline {
           #!/bin/bash
           echo "This is start $(pwd)"
           ls
+          cd /
+          pwd
+          ls
         '''
         echo 'package exitoso'
       }
