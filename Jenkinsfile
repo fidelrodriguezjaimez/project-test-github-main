@@ -37,6 +37,7 @@ pipeline {
           #!/bin/bash
           echo "This is start $(pwd)"
           cd target
+          cd test-classes
           ls
         '''
         echo 'package exitoso'
