@@ -38,7 +38,7 @@ pipeline {
           #!/bin/bash
           echo "This is start $(pwd)"
           ls
-          cd /
+          cd binaries
           pwd
           ls
         '''
