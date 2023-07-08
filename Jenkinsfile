@@ -58,7 +58,7 @@ pipeline {
                   -Dsonar.sourceEncoding=UTF-8 \
                   -Dsonar.exclusions=src/main/java/com/furazin/projecttestgithub/main.java \
                   -Dsonar.tests=src/test \
-                  -Dsonar.java.binaries=binaries/build \
+                  -Dsonar.java.binaries=/var/jenkins_home/workspace/project-test-github-main_master/binaries/build \
                   -Dsonar.test.inclusions=*.spec.ts \
                   -Dsonar.typescript.lcov.reportPaths=coverage/lcov.info"
         echo 'Scaneo Exitoso'
