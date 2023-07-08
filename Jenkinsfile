@@ -13,7 +13,7 @@ pipeline {
       steps {
         sh 'mvn clean compile'
         sh 'mvn clean install'
-        sh 'javac -d binaries/build src/*.java'
+        sh 'javac -d binaries/build src/main/java/com/furazin/projecttestgithub/Math/*.java src/test/java/*.java'
         echo 'Compilacion exitosa'
       }
     }
