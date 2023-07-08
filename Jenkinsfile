@@ -12,6 +12,7 @@ pipeline {
     stage('Compilado') {
       steps {
         sh 'mvn clean compile'
+        sh 'mvn clean install'
         echo 'Compilacion exitosa'
       }
     }
@@ -30,6 +31,17 @@ pipeline {
       }
     }
 
+    stage('folder') {
+      steps {
+        sh script:'''
+          #!/bin/bash
+          echo "This is start $(pwd)"
+          ls
+        '''
+        echo 'package exitoso'
+      }
+    }
+
     stage('SonarQube Scan') {
       steps {
         checkout scm
@@ -38,10 +50,11 @@ pipeline {
                   -Dsonar.projectKey=${SONAR_KEY} \
                   -Dsonar.host.url=${SONAR_SERVER} \
                   -Dsonar.login=${SONAR_TOKEN} \
-                  -Dsonar.sources=src/main/java/com/furazin/projecttestgithub \
+                  -Dsonar.sources=src \
                   -Dsonar.sourceEncoding=UTF-8 \
                   -Dsonar.exclusions=src/main/java/com/furazin/projecttestgithub/main.java \
                   -Dsonar.tests=src/test \
+                  -Dsonar.java.binaries=binaries/build \
                   -Dsonar.test.inclusions=*.spec.ts \
                   -Dsonar.typescript.lcov.reportPaths=coverage/lcov.info"
         echo 'Scaneo Exitoso'
