@@ -11,16 +11,13 @@ pipeline {
 
     stage('Compilado') {
       steps {
-        sh 'mvn clean compile'
         sh 'mvn clean install'
-        sh 'javac -d binaries/build src/main/java/com/furazin/projecttestgithub/Math/*.java'
         echo 'Compilacion exitosa'
       }
     }
 
     stage('Test') {
       steps {
-        sh 'mvn test'
         sh 'npm run test --coverage --watchAll'
         echo 'package exitoso'
       }
