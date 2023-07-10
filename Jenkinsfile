@@ -21,6 +21,7 @@ pipeline {
     stage('Test') {
       steps {
         sh 'mvn test'
+        sh 'npm run test --coverage --watchAll'
         echo 'package exitoso'
       }
     }
@@ -59,7 +60,7 @@ pipeline {
                   -Dsonar.exclusions=src/main/java/com/furazin/projecttestgithub/main.java \
                   -Dsonar.tests=src/test/java \
                   -Dsonar.test.inclusions=src/test/java/*.java \
-                  -Dsonar.typescript.lcov.reportPaths=coverage/lcov.info"
+                  -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info"
         echo 'Scaneo Exitoso'
       }
     }
