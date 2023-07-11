@@ -18,7 +18,7 @@ pipeline {
 
     stage('Test') {
       steps {
-        sh 'nvn install'
+        sh 'mvn install'
         echo 'package exitoso'
       }
     }
