@@ -38,6 +38,7 @@ pipeline {
                 -Dsonar.sourceEncoding=UTF-8 \
                 -Dsonar.exclusions=*.properties\
                 -Dsonar.tests=src/test \
+                -Dsonar.test.inclusions=src/test \
                 -Dsonar.java.source=8 \
                 -Dsonar.java.binaries=target/classes \
                 -Dsonar.java.libraries=/home/jenkins/.m2/**/*.jar"
