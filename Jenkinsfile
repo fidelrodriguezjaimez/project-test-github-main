@@ -22,7 +22,7 @@ pipeline {
 
     stage('Test') {
       steps {
-        sh 'npm run test -- --coverage --watchAll=false'
+        sh 'mvn clean test jacoco:report'
         echo 'Pruebas unitarias exitosas'
       }
     }
