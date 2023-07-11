@@ -39,6 +39,9 @@ pipeline {
           cd target
           pwd
           ls
+          cd classes
+          pwd
+          ls
         '''
         echo 'package exitoso'
       }
@@ -57,7 +60,7 @@ pipeline {
                   -Dsonar.exclusions=src/main/java/com/furazin/projecttestgithub/main.java \
                   -Dsonar.tests=src/test/java \
                   -Dsonar.test.inclusions=src/test/java/*.java \
-                  -Dsonar.java.binaries=build/classes/java/ \
+                  -Dsonar.java.binaries=target/classes/java/ \
                   -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info"
         echo 'Scaneo Exitoso'
       }
