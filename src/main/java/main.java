@@ -1,6 +1,4 @@
-package com.furazin.projecttestgithub;
-
-import com.furazin.projecttestgithub.Math.Arithmetic;
+import Math.Arithmetic;
 
 public class main {
     public static void main(String[] args) {
