@@ -30,26 +30,18 @@ pipeline {
       steps {
         checkout scm
         sh 'pwd'
-        sh """cd .scannerwork
-              ls"""
         sh "sonar-scanner \
-                          -Dsonar.projectKey=${SONAR_KEY} \
-                          -Dsonar.host.url=${SONAR_SERVER} \
-                          -Dsonar.login=${SONAR_TOKEN} \
-                          -Dsonar.sources=src \
-                          -Dsonar.sourceEncoding=UTF-8 \
-                          -Dsonar.exclusions=*.properties\
-                          -Dsonar.tests=src/test \
-                          -Dsonar.java.source=8 \
-                          -Dsonar.java.binaries=/target/test-classes \
-                          -Dsonar.java.libraries=/home/jenkins/.m2/**/*.jar"
+                -Dsonar.projectKey=${SONAR_KEY} \
+                -Dsonar.host.url=${SONAR_SERVER} \
+                -Dsonar.login=${SONAR_TOKEN} \
+                -Dsonar.sources=src \
+                -Dsonar.sourceEncoding=UTF-8 \
+                -Dsonar.exclusions=*.properties\
+                -Dsonar.tests=src/test \
+                -Dsonar.java.source=8 \
+                -Dsonar.java.binaries=/target/test-classes \
+                -Dsonar.java.libraries=/home/jenkins/.m2/**/*.jar"
         echo 'Scaneo Exitoso'
-      }
-    }
-
-    stage('Generar informe de JaCoCo') {
-      steps {
-        jacoco(execPattern: 'target/**/*.exec')
       }
     }
 
