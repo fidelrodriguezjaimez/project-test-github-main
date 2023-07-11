@@ -63,7 +63,7 @@ pipeline {
                   -Dsonar.exclusions=src/main/java/com/furazin/projecttestgithub/main.java \
                   -Dsonar.tests=src/test/java \
                   -Dsonar.test.inclusions=src/test/java/*.java \
-                  -Dsonar.java.binaries=target/classes/com/ \
+                  -Dsonar.java.binaries=target/classes/com/furazin/projecttestgithub \
                   -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info"
         echo 'Scaneo Exitoso'
       }
