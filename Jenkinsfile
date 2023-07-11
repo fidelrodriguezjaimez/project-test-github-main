@@ -55,6 +55,7 @@ pipeline {
                   -Dsonar.exclusions=src/main/java/com/furazin/projecttestgithub/main.java \
                   -Dsonar.tests=src/test/java \
                   -Dsonar.test.inclusions=src/test/java \
+                  -Dsonar.java.source=8 \
                   -Dsonar.java.binaries=target/test-classes"
         echo 'Scaneo Exitoso'
       }
