@@ -58,12 +58,12 @@ pipeline {
                   -Dsonar.projectKey=${SONAR_KEY} \
                   -Dsonar.host.url=${SONAR_SERVER} \
                   -Dsonar.login=${SONAR_TOKEN} \
-                  -Dsonar.sources=src/main/java/com/furazin/projecttestgithub \
+                  -Dsonar.sources=src/main/java \
                   -Dsonar.sourceEncoding=UTF-8 \
                   -Dsonar.exclusions=src/main/java/com/furazin/projecttestgithub/main.java \
                   -Dsonar.tests=src/test/java \
                   -Dsonar.test.inclusions=src/test/java/*.java \
-                  -Dsonar.java.binaries=target/classes/com/furazin/projecttestgithub \
+                  -Dsonar.java.binaries=target/classes \
                   -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info"
         echo 'Scaneo Exitoso'
       }
