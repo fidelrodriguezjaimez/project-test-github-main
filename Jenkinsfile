@@ -56,7 +56,8 @@ pipeline {
                   -Dsonar.tests=src/test/java \
                   -Dsonar.test.inclusions=src/test/java \
                   -Dsonar.java.source=8 \
-                  -Dsonar.java.binaries=."
+                  -Dsonar.java.binaries=. \
+                  -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml"
         echo 'Scaneo Exitoso'
       }
     }
