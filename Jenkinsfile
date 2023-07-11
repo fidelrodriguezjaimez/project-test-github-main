@@ -9,33 +9,13 @@ pipeline {
       }
     }
 
-    stage('Compilado') {
+    stage('Build') {
       steps {
-        sh 'mvn clean install'
+        sh 'mvn clean package'
         echo 'Compilacion exitosa'
       }
     }
-
-    stage('folder') {
-      steps {
-        sh script:'''
-          #!/bin/bash
-          echo "This is start $(pwd)"
-          ls
-          cd target
-          pwd
-          ls
-          cd classes
-          pwd
-          ls
-          cd com
-          pwd
-          ls
-        '''
-        echo 'package exitoso'
-      }
-    }
-
+    
     stage('SonarQube Scan') {
       steps {
         checkout scm
