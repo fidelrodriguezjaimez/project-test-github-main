@@ -11,14 +11,14 @@ pipeline {
 
     stage('Compilado') {
       steps {
-        sh 'mvn clean install'
+        sh 'mvn clean'
         echo 'Compilacion exitosa'
       }
     }
 
     stage('Test') {
       steps {
-        sh 'nvm test
+        sh 'nvm install'
         echo 'package exitoso'
       }
     }
@@ -57,7 +57,7 @@ pipeline {
                   -Dsonar.exclusions=src/main/java/com/furazin/projecttestgithub/main.java \
                   -Dsonar.tests=src/test/java \
                   -Dsonar.test.inclusions=src/test/java/*.java \
-                  -Dsonar.java.binaries=build/classes/java/
+                  -Dsonar.java.binaries=build/classes/java/ \
                   -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info"
         echo 'Scaneo Exitoso'
       }
