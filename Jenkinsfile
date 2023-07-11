@@ -13,8 +13,6 @@ pipeline {
       steps {
         sh 'mvn -ntp -B clean verify -DskipITs=true'
         sh '''#!/bin/bash
-          echo "This is start $(pwd)"
-          ls
           cd /
           pwd
           ls'''
