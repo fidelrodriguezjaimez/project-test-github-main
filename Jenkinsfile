@@ -13,24 +13,36 @@ pipeline {
       steps {
         sh 'mvn clean package'
         echo 'Compilacion exitosa'
+        sh '''#!/bin/bash
+          echo "This is start $(pwd)"
+          ls
+          cd target
+          pwd
+          ls
+          cd classes
+          pwd
+          ls
+          cd com
+          pwd
+          ls'''
       }
     }
-    
+
     stage('SonarQube Scan') {
       steps {
         checkout scm
         sh "sonar-scanner \
-                  -Dsonar.projectKey=${SONAR_KEY} \
-                  -Dsonar.host.url=${SONAR_SERVER} \
-                  -Dsonar.login=${SONAR_TOKEN} \
-                  -Dsonar.sources=src/main/java \
-                  -Dsonar.sourceEncoding=UTF-8 \
-                  -Dsonar.exclusions=src/main/java/com/furazin/projecttestgithub/main.java \
-                  -Dsonar.tests=./src \
-                  -Dsonar.test.inclusions=src/test/java \
-                  -Dsonar.java.source=8 \
-                  -Dsonar.java.binaries=target/test-classes \
-                  -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml"
+                          -Dsonar.projectKey=${SONAR_KEY} \
+                          -Dsonar.host.url=${SONAR_SERVER} \
+                          -Dsonar.login=${SONAR_TOKEN} \
+                          -Dsonar.sources=src/main/java \
+                          -Dsonar.sourceEncoding=UTF-8 \
+                          -Dsonar.exclusions=src/main/java/com/furazin/projecttestgithub/main.java \
+                          -Dsonar.tests=./src \
+                          -Dsonar.test.inclusions=src/test/java \
+                          -Dsonar.java.source=8 \
+                          -Dsonar.java.binaries=target/test-classes \
+                          -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml"
         echo 'Scaneo Exitoso'
       }
     }
@@ -49,7 +61,7 @@ pipeline {
     }
 
     stage('Push Harbor') {
-      steps {        
+      steps {
         sh 'docker login ${HARBOR_URL} -u ${HARBOR_USERNAME} -p ${HARBOR_PASSWORD}'
         sh 'docker push ${HARBOR_URL}/jenkinsjavaimage/java-imagen:${BUILD_NUMBER}'
         sh 'docker rmi ${HARBOR_URL}/jenkinsjavaimage/java-imagen:${BUILD_NUMBER}'
@@ -62,10 +74,10 @@ pipeline {
   environment {
     SONAR_KEY = '23_Coppel_TestJenkinsGitHub'
     SONAR_SERVER = 'https://devtools.axity.com/sonarlts'
-    SONAR_TOKEN = credentials("sonartoken-secret")
+    SONAR_TOKEN = credentials('sonartoken-secret')
     HARBOR_URL = 'demo.goharbor.io'
     HARBOR_USERNAME = 'fidel.rodriguez'
-    HARBOR_PASSWORD = credentials("harborpas-secret")
+    HARBOR_PASSWORD = credentials('harborpas-secret')
   }
   post {
     success {
