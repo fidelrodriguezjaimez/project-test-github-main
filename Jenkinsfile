@@ -30,6 +30,8 @@ pipeline {
       steps {
         checkout scm
         sh 'pwd'
+        sh """cd .scannerwork
+              ls"""
         sh "sonar-scanner \
                           -Dsonar.projectKey=${SONAR_KEY} \
                           -Dsonar.host.url=${SONAR_SERVER} \
@@ -38,9 +40,8 @@ pipeline {
                           -Dsonar.sourceEncoding=UTF-8 \
                           -Dsonar.exclusions=*.properties\
                           -Dsonar.tests=src/test \
-                          -Dsonar.test.inclusions=src/test \
                           -Dsonar.java.source=8 \
-                          -Dsonar.java.binaries=target/test-classes \
+                          -Dsonar.java.binaries=/target/test-classes \
                           -Dsonar.java.libraries=/home/jenkins/.m2/**/*.jar"
         echo 'Scaneo Exitoso'
       }
