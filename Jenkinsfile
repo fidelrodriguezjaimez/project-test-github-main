@@ -54,14 +54,20 @@ pipeline {
         echo 'Image Push succed'
       }
     }
-
+    
     stage('Deploy - dev') {
       steps {
-        sh 'mvn gatling:test -o'
+        sh '''#!/bin/bash
+          pwd
+          ls
+          cd testing/stress/develop
+          pwd
+          ls
+          mvn gatling:test -o'''
         echo 'scripts de carga ejecutados exitosamente'
       }
     }
-
+    
   }
   environment {
     SONAR_KEY = '23_Coppel_TestJenkinsGitHub'
