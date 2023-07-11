@@ -11,7 +11,8 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh 'mvn clean package'       
+        sh 'mvn -ntp -B clean verify -DskipITs=true'
+        
         sh '''#!/bin/bash
           echo "This is start $(pwd)"
           ls
@@ -32,14 +33,14 @@ pipeline {
                           -Dsonar.projectKey=${SONAR_KEY} \
                           -Dsonar.host.url=${SONAR_SERVER} \
                           -Dsonar.login=${SONAR_TOKEN} \
-                          -Dsonar.sources=src/main \
+                          -Dsonar.sources=src \
                           -Dsonar.sourceEncoding=UTF-8 \
                           -Dsonar.exclusions=*.properties\
-                          -Dsonar.tests=./src \
+                          -Dsonar.tests=src/test \
                           -Dsonar.test.inclusions=src/test \
                           -Dsonar.java.source=8 \
                           -Dsonar.java.binaries=target/test-classes \
-                          -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml"
+                          -Dsonar.java.libraries=/home/jenkins/.m2/**/*.jar"
         echo 'Scaneo Exitoso'
       }
     }
