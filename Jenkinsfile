@@ -11,15 +11,8 @@ pipeline {
 
     stage('Compilado') {
       steps {
-        sh 'mvn clean'
+        sh 'mvn clean install'
         echo 'Compilacion exitosa'
-      }
-    }
-
-    stage('Test') {
-      steps {
-        sh 'mvn install'
-        echo 'package exitoso'
       }
     }
 
@@ -54,7 +47,6 @@ pipeline {
       steps {
         checkout scm
         sh "sonar-scanner \
-                  -Dsonar.coveragePlugin=generic \
                   -Dsonar.projectKey=${SONAR_KEY} \
                   -Dsonar.host.url=${SONAR_SERVER} \
                   -Dsonar.login=${SONAR_TOKEN} \
@@ -62,9 +54,8 @@ pipeline {
                   -Dsonar.sourceEncoding=UTF-8 \
                   -Dsonar.exclusions=src/main/java/com/furazin/projecttestgithub/main.java \
                   -Dsonar.tests=src/test/java \
-                  -Dsonar.test.inclusions=src/test/java/*.java \
-                  -Dsonar.java.binaries=target/classes \
-                  -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info"
+                  -Dsonar.test.inclusions=src/test/java \
+                  -Dsonar.java.binaries=target/classes"
         echo 'Scaneo Exitoso'
       }
     }
