@@ -29,7 +29,7 @@ pipeline {
                   -Dsonar.tests=./src \
                   -Dsonar.test.inclusions=src/test/java \
                   -Dsonar.java.source=8 \
-                  -Dsonar.java.binaries=./target/classes \
+                  -Dsonar.java.binaries=target/test-classes \
                   -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml"
         echo 'Scaneo Exitoso'
       }
