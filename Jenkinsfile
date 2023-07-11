@@ -11,8 +11,7 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh 'mvn clean package'
-        echo 'Compilacion exitosa'
+        sh 'mvn clean package'       
         sh '''#!/bin/bash
           echo "This is start $(pwd)"
           ls
@@ -22,6 +21,7 @@ pipeline {
           cd test-classes
           pwd
           ls'''
+         echo 'Compilacion exitosa'
       }
     }
 
