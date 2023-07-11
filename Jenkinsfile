@@ -36,11 +36,22 @@ pipeline {
       }
     }
 
-    stage('Análisis de SonarQube') {
+    stage('SonarQube Scan') {
       steps {
-        withSonarQubeEnv('sonarqube') {
-          sh 'sonar-scanner'
-        }
+        checkout scm
+        sh "sonar-scanner \
+                  -Dsonar.projectKey=${SONAR_KEY} \
+                  -Dsonar.host.url=${SONAR_SERVER} \
+                  -Dsonar.login=${SONAR_TOKEN} \
+                  -Dsonar.sources=src/main/java \
+                  -Dsonar.sourceEncoding=UTF-8 \
+                  -Dsonar.exclusions=src/main/java/com/furazin/projecttestgithub/main.java \
+                  -Dsonar.tests=./src \
+                  -Dsonar.test.inclusions=src/test/java \
+                  -Dsonar.java.source=8 \
+                  -Dsonar.java.binaries=./target/classes \
+                  -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml"
+        echo 'Scaneo Exitoso'
       }
     }
 
