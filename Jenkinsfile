@@ -11,14 +11,14 @@ pipeline {
 
     stage('Compilado') {
       steps {
-        sh 'mvn clean'
+        sh 'mvn clean install'
         echo 'Compilacion exitosa'
       }
     }
 
     stage('Test') {
       steps {
-        sh 'nvm install
+        sh 'nvm test
         echo 'package exitoso'
       }
     }
