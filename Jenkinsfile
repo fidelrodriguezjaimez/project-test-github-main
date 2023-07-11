@@ -12,35 +12,30 @@ pipeline {
     stage('Build') {
       steps {
         sh 'mvn -ntp -B clean verify -DskipITs=true'
-        
         sh '''#!/bin/bash
           echo "This is start $(pwd)"
           ls
-          cd target
-          pwd
-          ls
-          cd classes
+          cd /
           pwd
           ls'''
-         echo 'Compilacion exitosa'
+        echo 'Compilacion exitosa'
       }
     }
 
     stage('SonarQube Scan') {
       steps {
         checkout scm
-        sh 'pwd'
         sh "sonar-scanner \
                 -Dsonar.projectKey=${SONAR_KEY} \
                 -Dsonar.host.url=${SONAR_SERVER} \
                 -Dsonar.login=${SONAR_TOKEN} \
-                -Dsonar.sources=src \
-                -Dsonar.sourceEncoding=UTF-8 \
-                -Dsonar.exclusions=*.properties\
+                -Dsonar.sources=src/main \
                 -Dsonar.tests=src/test \
+                -Dsonar.java.binaries=target/classes \
                 -Dsonar.test.inclusions=src/test \
-                -Dsonar.java.source=8 \
-                -Dsonar.java.binaries=/var/jenkins_home/workspace/project-test-github-main_master/target/classes"
+                -Dsonar.java.source=8 \                
+                -Dsonar.sourceEncoding=UTF-8 \
+                -Dsonar.exclusions=*.properties"
         echo 'Scaneo Exitoso'
       }
     }
