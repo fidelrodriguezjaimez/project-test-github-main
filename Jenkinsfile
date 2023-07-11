@@ -16,13 +16,6 @@ pipeline {
       }
     }
 
-    stage('Package') {
-      steps {
-        sh 'mvn package'
-        echo 'package exitoso'
-      }
-    }
-
     stage('folder') {
       steps {
         sh script:'''
