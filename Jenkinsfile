@@ -31,7 +31,7 @@ pipeline {
                 -Dsonar.tests=src/test \
                 -Dsonar.java.binaries=target/classes \
                 -Dsonar.test.inclusions=src/test \
-                -Dsonar.java.source=8 \                
+                -Dsonar.java.source=8 \
                 -Dsonar.sourceEncoding=UTF-8 \
                 -Dsonar.exclusions=*.properties"
         echo 'Scaneo Exitoso'
