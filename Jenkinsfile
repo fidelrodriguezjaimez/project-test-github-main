@@ -19,10 +19,7 @@ pipeline {
           cd target
           pwd
           ls
-          cd classes
-          pwd
-          ls
-          cd com
+          cd test-classes
           pwd
           ls'''
       }
