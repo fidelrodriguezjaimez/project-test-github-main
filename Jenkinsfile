@@ -55,6 +55,16 @@ pipeline {
       }
     }
 
+    stage('Deploy - dev') {
+      steps {
+        sh '''#!/bin/bash
+          cd testing\stress\develop
+          mvn gatling:test -o
+          '''
+        echo 'scripts de carga ejecutados exitosamente'
+      }
+    }
+
   }
   environment {
     SONAR_KEY = '23_Coppel_TestJenkinsGitHub'
