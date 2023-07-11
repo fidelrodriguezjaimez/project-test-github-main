@@ -58,9 +58,8 @@ pipeline {
     stage('Deploy - dev') {
       steps {
         sh '''#!/bin/bash
-          cd testing\stress\develop
-          mvn gatling:test -o
-          '''
+          cd testing/stress/develop
+          mvn gatling:test -o'''
         echo 'scripts de carga ejecutados exitosamente'
       }
     }
