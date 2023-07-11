@@ -29,6 +29,7 @@ pipeline {
     stage('SonarQube Scan') {
       steps {
         checkout scm
+        sh 'pwd'
         sh "sonar-scanner \
                           -Dsonar.projectKey=${SONAR_KEY} \
                           -Dsonar.host.url=${SONAR_SERVER} \
