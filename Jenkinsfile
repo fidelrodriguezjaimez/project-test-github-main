@@ -19,7 +19,7 @@ pipeline {
           cd target
           pwd
           ls
-          cd test-classes
+          cd classes
           pwd
           ls'''
          echo 'Compilacion exitosa'
@@ -39,7 +39,7 @@ pipeline {
                 -Dsonar.exclusions=*.properties\
                 -Dsonar.tests=src/test \
                 -Dsonar.java.source=8 \
-                -Dsonar.java.binaries=/target/test-classes \
+                -Dsonar.java.binaries=target/classes \
                 -Dsonar.java.libraries=/home/jenkins/.m2/**/*.jar"
         echo 'Scaneo Exitoso'
       }
