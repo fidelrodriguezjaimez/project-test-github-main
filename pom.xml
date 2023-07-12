@@ -43,7 +43,7 @@
 
     <build>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
-            <testSourceDirectory>src/test/scala</testSourceDirectory>
+           <!-- <testSourceDirectory>src/test/scala</testSourceDirectory> -->
                  <plugins>
                 <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
                 <plugin>
