@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-         <!-- se agrego -->
+         <!-- se agrego 
          <groupId>io.gatling.demo</groupId>
          <artifactId>gatling-maven-plugin-demo-scala</artifactId>
          <version>3.7.6</version>
@@ -27,7 +27,7 @@
                <scope>test</scope>
              </dependency>
            </dependencies> 
-         <!-- fin de se agrego -->
+          -->
          
     <groupId>org.furazin</groupId>
     <artifactId>project-test-github</artifactId>
@@ -99,7 +99,7 @@
                     <version>3.0.0</version>
                 </plugin>
                      
-                  <!-- se agrego -->
+                  <!-- se agrego 
                         <plugin>
                           <groupId>net.alchim31.maven</groupId>
                           <artifactId>scala-maven-plugin</artifactId>
@@ -131,8 +131,6 @@
                           <version>${gatling-maven-plugin.version}</version>
                           <configuration>
                             <runMultipleSimulations>true</runMultipleSimulations>
-                            <!-- Enterprise Cloud (https://cloud.gatling.io/) configuration reference: https://gatling.io/docs/gatling/reference/current/extensions/maven_plugin/#working-with-gatling-enterprise-cloud -->
-                            <!-- Enterprise Self-Hosted configuration reference: https://gatling.io/docs/gatling/reference/current/extensions/maven_plugin/#working-with-gatling-enterprise-self-hosted -->
                           </configuration>
                         </plugin>
                           <plugin>
@@ -143,7 +141,7 @@
                             <testFailureIgnore>true</testFailureIgnore>
                           </configuration>
                         </plugin>
-                          <!-- fin de se agrego -->
+                          fin de se agrego -->
                      
             </plugins>
         </pluginManagement>
