@@ -4,6 +4,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+         <!-- se agrego 
+         <groupId>io.gatling.demo</groupId>
+         <artifactId>gatling-maven-plugin-demo-scala</artifactId>
+         <version>3.7.6</version>
+           <dependencies>
+             <dependency>
+               <groupId>io.gatling.highcharts</groupId>
+               <artifactId>gatling-charts-highcharts</artifactId>
+               <version>${gatling.version}</version>
+               <scope>test</scope>
+             </dependency>
+           </dependencies> -->
+         
     <groupId>org.furazin</groupId>
     <artifactId>project-test-github</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -71,7 +84,19 @@
                     <artifactId>maven-project-info-reports-plugin</artifactId>
                     <version>3.0.0</version>
                 </plugin>
-
+                     
+                  <!-- se agrego -->
+                     <plugin>
+                          <groupId>io.gatling</groupId>
+                          <artifactId>gatling-maven-plugin</artifactId>
+                          <version>${gatling-maven-plugin.version}</version>
+                          <configuration>
+                            <runMultipleSimulations>true</runMultipleSimulations>
+                            <!-- Enterprise Cloud (https://cloud.gatling.io/) configuration reference: https://gatling.io/docs/gatling/reference/current/extensions/maven_plugin/#working-with-gatling-enterprise-cloud -->
+                            <!-- Enterprise Self-Hosted configuration reference: https://gatling.io/docs/gatling/reference/current/extensions/maven_plugin/#working-with-gatling-enterprise-self-hosted -->
+                          </configuration>
+                        </plugin>
+                     
             </plugins>
         </pluginManagement>
     </build>
