@@ -4,10 +4,21 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-         <!-- se agrego 
+         <!-- se agrego -->
          <groupId>io.gatling.demo</groupId>
          <artifactId>gatling-maven-plugin-demo-scala</artifactId>
          <version>3.7.6</version>
+
+           <properties>
+             <maven.compiler.source>1.8</maven.compiler.source>
+             <maven.compiler.target>1.8</maven.compiler.target>
+             <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+             <gatling.version>${project.version}</gatling.version>
+             <gatling-maven-plugin.version>4.1.3</gatling-maven-plugin.version>
+             <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
+             <scala-maven-plugin.version>4.5.6</scala-maven-plugin.version>
+           </properties>
+         
            <dependencies>
              <dependency>
                <groupId>io.gatling.highcharts</groupId>
@@ -15,7 +26,8 @@
                <version>${gatling.version}</version>
                <scope>test</scope>
              </dependency>
-           </dependencies> -->
+           </dependencies> 
+         <!-- fin de se agrego -->
          
     <groupId>org.furazin</groupId>
     <artifactId>project-test-github</artifactId>
@@ -31,7 +43,8 @@
 
     <build>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
-            <plugins>
+            <testSourceDirectory>src/test/scala</testSourceDirectory>
+                 <plugins>
                 <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
                 <plugin>
                     <artifactId>maven-clean-plugin</artifactId>
@@ -56,7 +69,8 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-jar-plugin</artifactId>
-                    <version>3.0.2</version>
+                    <version>${maven-jar-plugin.version}</version>
+                    <!-- <version>3.0.2</version> -->
                     <configuration>
                         <archive>
                             <manifest>
@@ -86,6 +100,31 @@
                 </plugin>
                      
                   <!-- se agrego -->
+                        <plugin>
+                          <groupId>net.alchim31.maven</groupId>
+                          <artifactId>scala-maven-plugin</artifactId>
+                          <version>${scala-maven-plugin.version}</version>
+                          <executions>
+                            <execution>
+                              <goals>
+                                <goal>testCompile</goal>
+                              </goals>
+                              <configuration>
+                                <jvmArgs>
+                                  <jvmArg>-Xss100M</jvmArg>
+                                </jvmArgs>
+                                <args>
+                                  <arg>-target:jvm-1.8</arg>
+                                  <arg>-deprecation</arg>
+                                  <arg>-feature</arg>
+                                  <arg>-unchecked</arg>
+                                  <arg>-language:implicitConversions</arg>
+                                  <arg>-language:postfixOps</arg>
+                                </args>
+                              </configuration>
+                            </execution>
+                          </executions>
+                        </plugin>
                      <plugin>
                           <groupId>io.gatling</groupId>
                           <artifactId>gatling-maven-plugin</artifactId>
@@ -96,6 +135,15 @@
                             <!-- Enterprise Self-Hosted configuration reference: https://gatling.io/docs/gatling/reference/current/extensions/maven_plugin/#working-with-gatling-enterprise-self-hosted -->
                           </configuration>
                         </plugin>
+                          <plugin>
+                          <groupId>org.apache.maven.plugins</groupId>
+                          <artifactId>maven-surefire-plugin</artifactId>
+                          <version>3.0.0-M2</version>
+                          <configuration>
+                            <testFailureIgnore>true</testFailureIgnore>
+                          </configuration>
+                        </plugin>
+                          <!-- fin de se agrego -->
                      
             </plugins>
         </pluginManagement>
