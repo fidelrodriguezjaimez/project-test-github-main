@@ -63,18 +63,6 @@ pipeline {
         echo 'Image Push succed'
       }
     }
-
-    stage('Gatling Install') {
-      steps {
-        sh '''#!/bin/bash
-          mkdir /var/tmp/gatling3
-          wget https://repo1.maven.org/maven2/io/gatling/highcharts/gatling-charts-highcharts-bundle/3.0.3/gatling-charts-highcharts-bundle-3.0.3-bundle.zip -P /var/tmp/gatling3
-          unzip -o /var/tmp/gatling3/gatling-charts-highcharts-bundle-3.0.3-bundle.zip -d /var/tmp/gatling3
-          export GATLING_HOME=”/var/tmp/gatling3/gatling-charts-highcharts-bundle-3.0.3"
-          export PATH=$PATH:/var/tmp/gatling3/gatling-charts-highcharts-bundle-3.0.3/bin'''
-        echo 'Gatling Instalado correctamente'
-      }
-    }
     
     stage('Deploy - dev') {
       steps {
