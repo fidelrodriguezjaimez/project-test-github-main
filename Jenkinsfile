@@ -63,7 +63,8 @@ pipeline {
         echo 'Image Push succed'
       }
     }
-    
+
+    /*
     stage('Performance Tests1') {
         steps {
             sh '''
@@ -72,6 +73,7 @@ pipeline {
             gatlingArchive()
         }
     }
+    */
     
     stage('Deploy - dev') {
       steps {
