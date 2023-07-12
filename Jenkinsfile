@@ -83,6 +83,7 @@ pipeline {
           cd testing/stress/develop
           pwd
           ls
+          mvn clean install -U
           mvn -B clean package
           mvn gatling:test -o'''
         echo 'scripts de carga ejecutados exitosamente'
