@@ -65,7 +65,7 @@ pipeline {
     }
 
     stage('Performance Tests') {
-        dir('.') {
+        steps {
             sh '''
             source ./install-gatling.sh
             gatling.sh -rf . -rsf testing/stress/develop/src/test/resources -sf testing/stress/develop/src/test/scala/microservice/coppel -s Home_Page
@@ -74,7 +74,7 @@ pipeline {
         }
     }
     stage('Performance Tests') {
-        dir('.') {
+        steps {
             sh '''
             source /opt/gatling/bin/gatling.sh
             gatling.sh -rf . -rsf testing/stress/develop/src/test/resources -sf testing/stress/develop/src/test/scala/microservice/coppel -s Home_Page
