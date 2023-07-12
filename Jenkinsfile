@@ -63,16 +63,7 @@ pipeline {
         echo 'Image Push succed'
       }
     }
-
-    stage('Performance Tests') {
-        steps {
-            sh '''
-            source ./install-gatling.sh
-            gatling.sh -rf . -rsf testing/stress/develop/src/test/resources -sf testing/stress/develop/src/test/scala/microservice/coppel -s Home_Page
-            '''
-            gatlingArchive()
-        }
-    }
+    
     stage('Performance Tests1') {
         steps {
             sh '''
