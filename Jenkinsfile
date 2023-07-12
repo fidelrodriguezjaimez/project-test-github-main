@@ -73,7 +73,7 @@ pipeline {
             gatlingArchive()
         }
     }
-    stage('Performance Tests') {
+    stage('Performance Tests1') {
         steps {
             sh '''
             source /opt/gatling/bin/gatling.sh
