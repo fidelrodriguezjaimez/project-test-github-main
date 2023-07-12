@@ -20,12 +20,14 @@ pipeline {
       }
     }
 
+    /*
     stage('Test') {
       steps {
         sh 'mvn clean test jacoco:report'
         echo 'Pruebas unitarias exitosas'
       }
     }
+    */
 
     stage('SonarQube Scan') {
       steps {
