@@ -11,11 +11,7 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh 'mvn -ntp -B clean verify -DskipITs=true'
-        sh '''#!/bin/bash
-          cd /
-          pwd
-          ls'''
+        sh 'mvn clean install -U'
         echo 'Compilacion exitosa'
       }
     }
@@ -63,28 +59,11 @@ pipeline {
         echo 'Image Push succed'
       }
     }
-
-    /*
-    stage('Performance Tests1') {
-        steps {
-            sh '''
-            gatling.sh -rf . -rsf stress/develop/src/test/resources -sf testing/stress/develop/src/test/scala/microservice/coppel -s UserLogOperations
-            '''
-            gatlingArchive()
-        }
-    }
-    */
     
-    stage('Deploy - dev') {
+    stage('Performance Tests') {
       steps {
         sh '''#!/bin/bash
-          pwd
-          ls
           cd testing/stress/develop
-          pwd
-          ls
-          mvn clean install -U
-          mvn -B clean package
           mvn gatling:test -o'''
         echo 'scripts de carga ejecutados exitosamente'
       }
