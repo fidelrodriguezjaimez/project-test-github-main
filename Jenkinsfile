@@ -67,7 +67,7 @@ pipeline {
     stage('Performance Tests1') {
         steps {
             sh '''
-            gatling.sh -rf . -rsf testing/stress/develop/src/test/resources -sf testing/stress/develop/src/test/scala/microservice/coppel -s Test1
+            gatling.sh -rf . -rsf stress/develop/src/test/resources -sf testing/stress/develop/src/test/scala/microservice/coppel -s Test1
             '''
             gatlingArchive()
         }
