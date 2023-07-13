@@ -64,7 +64,7 @@ pipeline {
       steps {
         sh '''#!/bin/bash          
           cd testing/funcional/develop
-          newman run testapiQA'''
+          newman run Petstore.postman_collection.json -e Petstorelocal.postman_environment.json -r junit,cli --reporter-junit-export result-tests-QA.xml'''
         echo 'scripts funcionales ejecutados exitosamente'
       }
     }
