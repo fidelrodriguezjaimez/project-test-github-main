@@ -51,6 +51,7 @@ pipeline {
     }
 
     stage("Deep Security Smart Check scan") {
+      steps {
         smartcheckScan([
             imageName: "java-imagen:${BUILD_NUMBER}",
             smartcheckHost: "cloudone.trendmicro.com/",
@@ -58,6 +59,7 @@ pipeline {
             preregistryScan: true,
             preregistryCredentialsId: "preregistry-auth",
         ])
+      }
     }
 
     stage('Push Harbor') {
