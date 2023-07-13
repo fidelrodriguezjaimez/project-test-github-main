@@ -45,16 +45,28 @@ pipeline {
 
     stage('BuildImage') {
       steps {
-        sh 'docker build -t demo.goharbor.io/jenkinsjavaimage/java-imagen:${BUILD_NUMBER} .'
+        sh 'docker build -t java-imagen:${BUILD_NUMBER} .'
         echo 'Build Image succes'
       }
     }
 
+    stage("Deep Security Smart Check scan") {
+        smartcheckScan([
+            imageName: "java-imagen:${BUILD_NUMBER}",
+            smartcheckHost: "cloudone.trendmicro.com/",
+            smartcheckCredentialsId: "smartcheck-auth",
+            preregistryScan: true,
+            preregistryCredentialsId: "preregistry-auth",
+        ])
+    }
+
     stage('Push Harbor') {
       steps {
+        sh 'docker tag java-imagen:${BUILD_NUMBER} demo.goharbor.io/jenkinsjavaimage/java-imagen:${BUILD_NUMBER}'
         sh 'docker login ${HARBOR_URL} -u ${HARBOR_USERNAME} -p ${HARBOR_PASSWORD}'
         sh 'docker push ${HARBOR_URL}/jenkinsjavaimage/java-imagen:${BUILD_NUMBER}'
         sh 'docker rmi ${HARBOR_URL}/jenkinsjavaimage/java-imagen:${BUILD_NUMBER}'
+        sh 'docker rmi java-imagen:${BUILD_NUMBER}'        
         sh 'docker images'
         echo 'Image Push succed'
       }
