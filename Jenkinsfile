@@ -64,7 +64,7 @@ pipeline {
       steps {
         sh '''#!/bin/bash
           cd testing/funcional/develop
-          run testapiQA'''
+          newman run testapiQA'''
         echo 'scripts funcionales ejecutados exitosamente'
       }
     }
