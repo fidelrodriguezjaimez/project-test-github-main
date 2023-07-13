@@ -1,0 +1,6 @@
+registry:
+  enabled: true
+
+  auth:
+    username: registryUser
+    password: registryPassword
