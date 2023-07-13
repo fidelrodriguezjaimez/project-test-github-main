@@ -34,7 +34,7 @@ pipeline {
                 -Dsonar.login=${SONAR_TOKEN} \
                 -Dsonar.sources=src/main \
                 -Dsonar.tests=src/test \
-                -Dsonar.java.binaries=target/classes \
+                -Dsonar.java.binaries=target/test-classes \
                 -Dsonar.test.inclusions=src/test \
                 -Dsonar.java.source=8 \
                 -Dsonar.sourceEncoding=UTF-8 \
