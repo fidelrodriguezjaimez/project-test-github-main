@@ -62,8 +62,9 @@ pipeline {
 
     stage('Funcional Tests') {
       steps {
-        sh '''#!/bin/bash
+        sh '''#!/bin/bash          
           cd testing/funcional/develop
+          npm install -g newman
           newman run testapiQA'''
         echo 'scripts funcionales ejecutados exitosamente'
       }
