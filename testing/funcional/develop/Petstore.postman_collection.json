@@ -59,7 +59,6 @@
 							"            \"required\": [\r",
 							"                \"id\",\r",
 							"                \"name\",\r",
-							"                \"age\"\r",
 							"            ],\r",
 							"            \"properties\": {\r",
 							"                \"id\": {\r",
