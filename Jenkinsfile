@@ -59,6 +59,15 @@ pipeline {
         echo 'Image Push succed'
       }
     }
+
+    stage('Funcional Tests') {
+      steps {
+        sh '''#!/bin/bash
+          cd testing/funcional/develop
+          run testapiQA'''
+        echo 'scripts funcionales ejecutados exitosamente'
+      }
+    }
     
     stage('Performance Tests') {
       steps {
