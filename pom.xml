@@ -16,8 +16,8 @@
        <!-- <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <junit.version>5.3.1</junit.version>
-        <jacoco.version>0.8.2</jacoco.version> -->
+        <junit.version>5.3.1</junit.version>-->
+        <jacoco.version>0.8.2</jacoco.version> 
     </properties>
     <dependencies>
         <dependency>
@@ -29,7 +29,7 @@
     </dependencies>
 
     <build>
-        <!-- <finalName>maven-code-coverage</finalName> -->
+        <finalName>maven-code-coverage</finalName>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
                  <plugins>
                 <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
@@ -86,11 +86,11 @@
                     <version>3.0.0</version>
                 </plugin>
                      
-<!--
+
              <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M1</version>
+                <version>3.0.0-M2</version>
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
@@ -110,7 +110,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin> -->
+            </plugin>
 
             </plugins>
         </pluginManagement>
