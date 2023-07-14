@@ -53,7 +53,7 @@ pipeline {
     stage("Deep Security Smart Check scan") {
       steps {
         smartcheckScan([
-            imageName: "fidelrdgzjmz/app_image",
+            imageName: "hub.docker.com/fidelrdgzjmz/app_image",
             smartcheckHost: "cloudone.trendmicro.com",
             smartcheckCredentialsId: "smartcheck-auth",
             preregistryScan: true,
