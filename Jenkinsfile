@@ -53,7 +53,7 @@ pipeline {
     stage("Deep Security Smart Check scan") {
       steps {
         smartcheckScan([
-            imageName: "java-imagen:${BUILD_NUMBER}",
+            imageName: "fidelrdgzjmz/app_image",
             smartcheckHost: "cloudone.trendmicro.com",
             smartcheckCredentialsId: "smartcheck-auth",
             preregistryScan: true,
