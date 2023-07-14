@@ -40,7 +40,11 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
+    <properties>
+         <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+         <sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+         <sonar.language>java</sonar.language>                 
+    </properties>
     <build>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
            <!-- <testSourceDirectory>src/test/scala</testSourceDirectory> -->
