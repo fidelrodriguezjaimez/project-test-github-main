@@ -6,18 +6,18 @@
   
     <groupId>org.furazin</groupId>
     <artifactId>project-test-github</artifactId>
-    <packaging>jar</packaging>
+    <!-- <packaging>jar</packaging> -->
     <version>1.0-SNAPSHOT</version>
     <properties>
        <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
        <sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
        <sonar.language>java</sonar.language>
 
-         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+       <!-- <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <junit.version>5.3.1</junit.version>
-        <jacoco.version>0.8.2</jacoco.version>
+        <jacoco.version>0.8.2</jacoco.version> -->
     </properties>
     <dependencies>
         <dependency>
@@ -29,9 +29,8 @@
     </dependencies>
 
     <build>
-         <finalName>maven-code-coverage</finalName>
+        <!-- <finalName>maven-code-coverage</finalName> -->
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
-           <!-- <testSourceDirectory>src/test/scala</testSourceDirectory> -->
                  <plugins>
                 <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
                 <plugin>
@@ -87,7 +86,7 @@
                     <version>3.0.0</version>
                 </plugin>
                      
-
+<!--
              <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -111,7 +110,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin> -->
 
             </plugins>
         </pluginManagement>
