@@ -23,7 +23,7 @@ pipeline {
         echo 'Pruebas unitarias exitosas'
       }
     }
-    */
+    
 
     stage('SonarQube Scan') {
       steps {
@@ -39,6 +39,20 @@ pipeline {
                 -Dsonar.java.source=8 \
                 -Dsonar.sourceEncoding=UTF-8 \
                 -Dsonar.exclusions=*.properties"
+        echo 'Scaneo Exitoso'
+      }
+    } */
+
+    stage('SonarQube Scan') {
+      steps {
+        checkout scm
+        sh "mvn package sonar:sonar \
+        -Dsonar.projectKey=${SONAR_KEY} \
+        -Dsonar.projectName=${SONAR_KEY} \
+        -Dsonar.sources=src/main \
+        -Dsonar.host.url=${SONAR_SERVER} \
+        -Dsonar.login=${SONAR_TOKEN}"
+        
         echo 'Scaneo Exitoso'
       }
     }
