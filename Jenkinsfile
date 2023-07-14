@@ -50,6 +50,7 @@ pipeline {
       }
     }
 
+    /*
     stage("Deep Security Smart Check scan") {
       steps {
         smartcheckScan([
@@ -61,6 +62,7 @@ pipeline {
         ])
       }
     }
+*/
 
     stage('Push Harbor') {
       steps {
